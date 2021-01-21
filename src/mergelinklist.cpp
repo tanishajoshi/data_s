@@ -6,62 +6,62 @@ using std::list;
 
 
 void merge(list<int> list1, list<int> list2, list<int> list3) {
-			list<int>::const_iterator tmp1 = list1.begin();
+      list<int>::const_iterator tmp1 = list1.begin();
       list<int>::const_iterator tmp2 = list2.begin();
 
-			while(true) {
-					if (list3.empty()) { //check syntax here
-							if(*tmp1<*tmp2) {
-									//i = *tmp1;
-									list3.insert(tmp1,*tmp1);
-									++tmp1;           //tmp = tmp.next
-							} else if (*tmp1 == *tmp2) {
-									//i = *tmp1;
-									list3.insert(tmp1,*tmp1);
-									list3.insert(tmp1,*tmp1);
-									++tmp1;
-									++tmp2;
-							} else {
+	while(true) {
+		if (list3.empty()) { //check syntax here
+			if(*tmp1<*tmp2) {
+				//i = *tmp1;
+				list3.insert(tmp1,*tmp1);
+				++tmp1;           //tmp = tmp.next
+			} else if (*tmp1 == *tmp2) {
+				//i = *tmp1;
+				list3.insert(tmp1,*tmp1);
+				list3.insert(tmp1,*tmp1);
+				++tmp1;
+				++tmp2;
+			} else {
 									 
-									 list3.insert(tmp2,*tmp2);
-									 ++tmp2;
-							}
-					} else { 
-							while(tmp1 != list1.end() || tmp2 != list2.end()) {	
+				list3.insert(tmp2,*tmp2);
+				++tmp2;
+			}
+		} else { 
+			while(tmp1 != list1.end() || tmp2 != list2.end()) {	
 							 
-									if (*tmp1 <*tmp2) {
+				if (*tmp1 <*tmp2) {
 										
-											list3.insert(tmp1,*tmp1);
-											++tmp1;
-									} else if (*tmp1==*tmp2) {
+					list3.insert(tmp1,*tmp1);
+					++tmp1;
+				} else if (*tmp1==*tmp2) {
 										 
-											list3.insert(tmp1,*tmp1);
-											list3.insert(tmp1,*tmp1);
-											++tmp1;
-											++tmp2; 
-									} else {
+					list3.insert(tmp1,*tmp1);
+					list3.insert(tmp1,*tmp1);
+					++tmp1;
+					++tmp2; 
+				} else {
 										
-											list3.insert(tmp2,*tmp2);
-											++tmp2;	
-									}			
-							}
-					}
-		}
-		if(tmp1 == list1.end()) {
-				while (!(tmp2 == list2.end())) {
+					list3.insert(tmp2,*tmp2);
+					++tmp2;	
+				}			
+			}
+		} //else
+	} //outer while
+	if(tmp1 == list1.end()) {
+		while (!(tmp2 == list2.end())) {
 						
-						list3.insert(tmp2,*tmp2);
-						++tmp2;
-				} 
-				return;
-		} else { 	
-				while(!(tmp1 == list1.end())) {
+			list3.insert(tmp2,*tmp2);
+			++tmp2;
+		} 
+		return;
+	} else { 	
+		while(!(tmp1 == list1.end())) {
 						
-						list3.insert(tmp1,*tmp1);
-						++tmp1;
-				}
-				return;
+			list3.insert(tmp1,*tmp1);
+			++tmp1;
 		}
+		return;
+	}
 }
 
 void showList(list <int> g) {
