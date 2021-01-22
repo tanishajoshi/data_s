@@ -10,6 +10,8 @@ void merge(list<int> list1, list<int> list2, list<int> list3) {
       list<int>::const_iterator tmp2 = list2.begin();
 
 			while(true) {
+					cout << "tmp 1= " << *tmp1<<endl;
+					cout <<"tmp2 = " <<*tmp2<<endl;
 					if (list3.empty()) { //check syntax here
 							if(*tmp1<*tmp2) {
 									//i = *tmp1;
@@ -26,39 +28,50 @@ void merge(list<int> list1, list<int> list2, list<int> list3) {
 									 list3.insert(tmp2,*tmp2);
 									 ++tmp2;
 							}
+							cout << "tmp1 = " <<*tmp1<< endl;
+							cout << "tmp2 = " <<*tmp2 << endl;
+					
+					 
 					} else { 
-							while(tmp1 != list1.end() || tmp2 != list2.end()) {	
-							 
+							cout << "reached here" << endl;
+							if (tmp1 ==list1.end()|| tmp2 == list2.end())
+									break; 
+							while(true) {	
+							 		if (tmp1 ==list1.end()|| tmp2 == list2.end()) 
+											break;
+									//cout << "reached inside 2nd while" <<endl;
+									cout << "tmp1 is " << *tmp1<<endl;
+									cout << "tmp2 is " << *tmp2<<endl;
 									if (*tmp1 <*tmp2) {
 										
 											list3.insert(tmp1,*tmp1);
-											++tmp1;
+											tmp1++;
 									} else if (*tmp1==*tmp2) {
 										 
 											list3.insert(tmp1,*tmp1);
 											list3.insert(tmp1,*tmp1);
-											++tmp1;
-											++tmp2; 
+											tmp1++;
+											tmp2++; 
 									} else {
 										
 											list3.insert(tmp2,*tmp2);
-											++tmp2;	
+											tmp2++;	
 									}			
 							}
-					}
+					} 
 		}
 		if(tmp1 == list1.end()) {
 				while (!(tmp2 == list2.end())) {
 						
 						list3.insert(tmp2,*tmp2);
-						++tmp2;
+						tmp2++;
 				} 
 				return;
 		} else { 	
 				while(!(tmp1 == list1.end())) {
 						
 						list3.insert(tmp1,*tmp1);
-						++tmp1;
+						tmp1++;
 				}
 				return;
 		}
