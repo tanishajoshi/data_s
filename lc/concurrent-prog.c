@@ -1,4 +1,15 @@
+/**
 
+trying to understand how producer/consumer threads work 
+
+in order to design a distributed messaging queue for eg.
+
+pthread_cond_t less -> thread condition for producer 
+
+more--> thread cond for consumer
+
+
+*/
 typedef struct {
 	char buf[BSIZE]
 	int occupied;
